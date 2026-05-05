@@ -137,26 +137,28 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       {/* Content */}
       <section className="py-12 px-4">
         <div className="max-w-3xl mx-auto">
-          <article
-            className="blog-content"
-            dangerouslySetInnerHTML={{ __html: typeof htmlContent === 'string' ? htmlContent : '' }}
-          />
+          <div className="glass-panel p-8">
+            <article
+              className="blog-content"
+              dangerouslySetInnerHTML={{ __html: typeof htmlContent === 'string' ? htmlContent : '' }}
+            />
 
-          {/* Footer */}
-          <div
-            className="mt-16 pt-8 border-t"
-            style={{ borderColor: 'rgba(156,39,176,0.4)' }}
-          >
-            <p className="text-xs font-mono mb-6" style={{ color: 'var(--floyd-text-muted)' }}>
-              Filed from the garage at 3 AM. Coffee was involved.
-            </p>
-            <Link
-              href="/blog"
-              className="btn-neon-cyan px-5 py-2.5 rounded-lg text-sm font-medium inline-flex items-center gap-2"
+            {/* Footer */}
+            <div
+              className="mt-16 pt-8 border-t"
+              style={{ borderColor: 'rgba(156,39,176,0.4)' }}
             >
-              <ArrowLeft size={16} />
-              Back to all posts
-            </Link>
+              <p className="text-xs font-mono mb-6" style={{ color: 'var(--floyd-text-muted)' }}>
+                Filed from the garage at 3 AM. Coffee was involved.
+              </p>
+              <Link
+                href="/blog"
+                className="btn-neon-cyan px-5 py-2.5 rounded-lg text-sm font-medium inline-flex items-center gap-2"
+              >
+                <ArrowLeft size={16} />
+                Back to all posts
+              </Link>
+            </div>
           </div>
         </div>
       </section>

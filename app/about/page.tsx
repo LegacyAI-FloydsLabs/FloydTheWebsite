@@ -42,9 +42,9 @@ const teamMembers = [
 ];
 
 const achievements = [
-  { label: 'Tools Built', value: '73+', color: 'var(--floyd-accent-cyan)' },
-  { label: 'MCP Servers', value: '13', color: 'var(--floyd-accent-pink)' },
-  { label: 'Lines of Code', value: '42,301+', color: 'var(--floyd-accent-green)' },
+  { label: 'Skills Built', value: '73', color: 'var(--floyd-accent-cyan)' },
+  { label: 'MCP Servers', value: '3', color: 'var(--floyd-accent-pink)' },
+  { label: 'Ghost Algorithms', value: '10', color: 'var(--floyd-accent-green)' },
   { label: 'Monthly Cost', value: '$0', color: 'var(--floyd-accent-orange)' },
   { label: 'Corporate Friends', value: '0', color: 'var(--floyd-text-subheading)' },
   { label: 'Subscriptions', value: 'NEVER', color: 'var(--floyd-accent-cyan)' },
@@ -327,6 +327,30 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Ecosystem */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto glass-panel p-8">
+          <h2 className="text-2xl font-bold mb-6 neon-heading">The Ecosystem</h2>
+          <p className="text-sm mb-6" style={{ color: 'var(--floyd-text-body)' }}>
+            Floyd Labs is part of the Legacy AI project. Everything is open source. Everything is free. Forever.
+          </p>
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
+            <div className="floyd-card p-5 text-center">
+              <div className="text-lg font-bold mb-1" style={{ color: 'var(--floyd-accent-cyan)' }}>FloydLabs.com</div>
+              <p className="text-xs" style={{ color: 'var(--floyd-text-muted)' }}>73 skills, 3 MCP servers, Swagger docs, blog, admin dashboard</p>
+            </div>
+            <a href="https://www.LegacyAI.space" target="_blank" rel="noopener noreferrer" className="floyd-card p-5 text-center block">
+              <div className="text-lg font-bold mb-1" style={{ color: 'var(--floyd-accent-pink)' }}>LegacyAI.space ↗</div>
+              <p className="text-xs" style={{ color: 'var(--floyd-text-muted)' }}>Parent project. Research, vision, broader AI ecosystem.</p>
+            </a>
+            <a href="https://github.com/LegacyAI-FloydsLabs" target="_blank" rel="noopener noreferrer" className="floyd-card p-5 text-center block">
+              <div className="text-lg font-bold mb-1" style={{ color: 'var(--floyd-accent-green)' }}>GitHub ↗</div>
+              <p className="text-xs" style={{ color: 'var(--floyd-text-muted)' }}>All source code. Public repos. No gates.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 px-4 text-center">
         <div className="max-w-4xl mx-auto glass-panel p-8">
@@ -334,11 +358,14 @@ export default function AboutPage() {
             P.S. If you&apos;re from a big tech company reading this — the secret sauce is spite. Lots of spite.
             You can&apos;t buy that.
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/tools" className="px-6 py-3 rounded-lg font-bold" style={{ background: 'var(--floyd-accent-cyan)', color: '#0a0510' }}>
               Explore the Tools
             </Link>
-            <Link href="/blog" className="px-6 py-3 rounded-lg font-bold" style={{ background: 'var(--floyd-accent-pink)', color: '#0a0510' }}>
+            <Link href="/connect" className="px-6 py-3 rounded-lg font-bold" style={{ background: 'var(--floyd-accent-pink)', color: '#0a0510' }}>
+              Connect via MCP
+            </Link>
+            <Link href="/blog" className="px-6 py-3 rounded-lg font-bold" style={{ background: 'var(--floyd-bg-card)', border: '2px solid var(--floyd-glow-purple)', color: 'var(--floyd-text-body)' }}>
               Read the Blog
             </Link>
           </div>

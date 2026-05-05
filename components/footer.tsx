@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Zap, Heart } from 'lucide-react';
+import { Zap, Heart, Github, ExternalLink } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -72,20 +72,57 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Philosophy */}
+          {/* Ecosystem */}
           <div>
             <h3
               className="text-sm font-semibold mb-3 uppercase tracking-wider"
               style={{ color: 'var(--floyd-text-heading)' }}
             >
-              Philosophy: BALLS
+              Ecosystem
             </h3>
-            <ul className="space-y-1 text-sm font-mono" style={{ color: 'var(--floyd-text-muted)' }}>
-              <li><span style={{ color: 'var(--floyd-accent-cyan)' }}>B</span>orderless</li>
-              <li><span style={{ color: 'var(--floyd-accent-pink)' }}>A</span>utonomous</li>
-              <li><span style={{ color: 'var(--floyd-accent-green)' }}>L</span>oud</li>
-              <li><span style={{ color: 'var(--floyd-accent-orange)' }}>L</span>iving</li>
-              <li><span style={{ color: 'var(--floyd-text-subheading)' }}>S</span>ubversive</li>
+            <ul className="space-y-2">
+              {[
+                { href: 'https://www.LegacyAI.space', label: 'LegacyAI.space', external: true },
+                { href: 'https://github.com/LegacyAI-FloydsLabs', label: 'GitHub', external: true, icon: true },
+                { href: '/api-docs', label: 'API Docs', external: false },
+                { href: '/connect', label: 'Connect (MCP)', external: false },
+              ].map((l) => (
+                <li key={l.href}>
+                  {l.external ? (
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm transition-colors inline-flex items-center gap-1"
+                      style={{ color: 'var(--floyd-text-muted)' }}
+                      onMouseEnter={(e) =>
+                        ((e.currentTarget as HTMLElement).style.color = 'var(--floyd-accent-cyan)')
+                      }
+                      onMouseLeave={(e) =>
+                        ((e.currentTarget as HTMLElement).style.color = 'var(--floyd-text-muted)')
+                      }
+                    >
+                      {l.icon && <Github size={14} />}
+                      {l.label}
+                      <ExternalLink size={10} />
+                    </a>
+                  ) : (
+                    <Link
+                      href={l.href}
+                      className="text-sm transition-colors"
+                      style={{ color: 'var(--floyd-text-muted)' }}
+                      onMouseEnter={(e) =>
+                        ((e.target as HTMLElement).style.color = 'var(--floyd-accent-cyan)')
+                      }
+                      onMouseLeave={(e) =>
+                        ((e.target as HTMLElement).style.color = 'var(--floyd-text-muted)')
+                      }
+                    >
+                      {l.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

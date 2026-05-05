@@ -123,8 +123,11 @@ export default async function ToolsPage() {
             className="text-lg max-w-2xl mx-auto mb-4"
             style={{ color: 'var(--floyd-text-muted)' }}
           >
-            Specialized AI skills running on Floyd Labs&rsquo; 13 MCP servers. Each tool is a weapon
-            in the fight against overpriced AI subscriptions.
+            73 AI skills across 3 MCP servers (floyd-core, ai-cognition, ai-orchestration)
+            plus 10 Ghost Algorithms. Connect via{' '}
+            <a href="/connect" style={{ color: 'var(--floyd-accent-cyan)', textDecoration: 'underline' }}>MCP protocol</a>{' '}
+            or{' '}
+            <a href="/api-docs" style={{ color: 'var(--floyd-accent-pink)', textDecoration: 'underline' }}>REST API</a>.
           </p>
         </div>
         <div className="glass-panel inline-flex items-center justify-center gap-6 text-sm font-mono px-6 py-3 mx-auto">

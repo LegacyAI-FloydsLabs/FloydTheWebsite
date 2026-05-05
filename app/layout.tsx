@@ -39,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script src="https://apps.abacus.ai/chatllm/appllm-lib.js" async />
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYLCYNM25F" />
         <script

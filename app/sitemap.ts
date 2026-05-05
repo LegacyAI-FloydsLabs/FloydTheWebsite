@@ -3,7 +3,7 @@ import { getAllSlugs } from '@/lib/blog-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://floydslabs.com';
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://floydlabs.abacusai.app';
 
   const staticRoutes = [
     { url: baseUrl, changeFrequency: 'monthly' as const, priority: 1 },
@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/tools`, changeFrequency: 'weekly' as const, priority: 0.9 },
     { url: `${baseUrl}/blog`, changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${baseUrl}/apps`, changeFrequency: 'monthly' as const, priority: 0.7 },
+    { url: `${baseUrl}/connect`, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/api-docs`, changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: `${baseUrl}/contact`, changeFrequency: 'yearly' as const, priority: 0.5 },
     { url: `${baseUrl}/privacy`, changeFrequency: 'yearly' as const, priority: 0.3 },
     { url: `${baseUrl}/terms`, changeFrequency: 'yearly' as const, priority: 0.3 },
