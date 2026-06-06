@@ -1,0 +1,183 @@
+// CRITICAL: This schema file is shared across multiple applications. Only make edits with explicit user consent. Changes here affect all apps using this database.
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/floyd_website/nextjs_space/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model session {
+  session_id    String   @id @default(uuid())
+  created_at    DateTime @default(now())
+  expires_at    DateTime
+  metadata      Json?    @default("{}")
+  last_activity DateTime @default(now())
+
+  @@map("sessions")
+}
+
+model usage_tracking {
+  id             String   @id @default(uuid())
+  session_id     String?
+  tool_name      String
+  server         String
+  execution_time Float
+  success        Boolean  @default(true)
+  timestamp      DateTime @default(now())
+  error_message  String?
+  metadata       Json?    @default("{}")
+
+  @@index([tool_name])
+  @@index([server])
+  @@index([timestamp])
+  @@map("usage_tracking")
+}
+
+model skills_cache {
+  skill_name   String   @id
+  content      String
+  schema       Json
+  last_updated DateTime @default(now())
+  metadata     Json?    @default("{}")
+
+  @@map("skills_cache")
+}
+
+model contact_submission {
+  id         String   @id @default(uuid())
+  name       String
+  email      String
+  subject    String?
+  message    String
+  created_at DateTime @default(now())
+  status     String   @default("new")
+
+  @@map("contact_submissions")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String?
+  name          String?
+  role          String    @default("admin")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  api_keys      api_key[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model blog_post {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  subtitle    String?
+  date        DateTime @default(now())
+  author      String
+  author_role String?
+  tags        String[]
+  excerpt     String?
+  content     String
+  published   Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
+model application {
+  id           String   @id @default(uuid())
+  name         String
+  slug         String   @unique
+  status       String   @default("coming-soon")
+  icon         String   @default("Terminal")
+  color        String   @default("cyan")
+  tagline      String?
+  description  String?
+  features     String[]
+  tag          String?
+  demo_url     String?
+  download_url String?
+  sort_order   Int      @default(0)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  @@map("applications")
+}
+
+model api_key {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  name        String
+  user_id     String?
+  user        User?    @relation(fields: [user_id], references: [id], onDelete: SetNull)
+  tier        String   @default("free")
+  rate_limit  Int      @default(100)
+  calls_today Int      @default(0)
+  calls_total Int      @default(0)
+  last_used   DateTime?
+  last_reset  DateTime @default(now())
+  active      Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  expires_at  DateTime?
+
+  @@index([key])
+  @@index([user_id])
+  @@map("api_keys")
+}
+
+model mcp_call_log {
+  id           String   @id @default(uuid())
+  api_key_id   String
+  skill_name   String
+  input        Json?
+  output       Json?
+  success      Boolean  @default(true)
+  error        String?
+  duration_ms  Int
+  tokens_used  Int      @default(0)
+  created_at   DateTime @default(now())
+
+  @@index([api_key_id])
+  @@index([skill_name])
+  @@index([created_at])
+  @@map("mcp_call_logs")
+}
