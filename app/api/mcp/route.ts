@@ -326,6 +326,17 @@ export async function POST(request: Request) {
         );
       }
 
+      // MCP lifecycle notifications are fire-and-forget per the spec.
+      // Acknowledge with 204 No Content (no JSON-RPC response body) so strict
+      // clients (OMP, Claude Desktop) don't log the call as a tool-load failure.
+      // The server's `capabilities` does not advertise notifications, but the
+      // spec still expects clients to send `notifications/initialized` after
+      // the `initialize` handshake completes.
+      case 'notifications/initialized':
+      case 'notifications/cancelled':
+      case 'notifications/progress': {
+        return new NextResponse(null, { status: 204, headers: corsHeaders });
+      }
       default:
         return NextResponse.json(
           createError(id, MCP_ERRORS.METHOD_NOT_FOUND, `Method '${method}' not found`),

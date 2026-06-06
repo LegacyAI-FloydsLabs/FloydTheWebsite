@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://floydslabs.com'),
   title: 'Floyd Labs | Garage-Born AI, Spite-Driven Innovation',
   description:
-    'Floyd Labs builds AI tools that belong to YOU — not to shareholders. 73+ tools, 3 MCP servers, zero subscriptions. Powered by caffeine and spite from Brown County, Indiana.',
+    'Floyd Labs builds AI tools that belong to YOU — not to shareholders. 73+ tools, 13 MCP servers, zero subscriptions. Powered by caffeine and spite from Brown County, Indiana.',
   keywords: [
     'Floyd Labs', 'AI tools', 'MCP server', 'open source AI',
     'no subscription AI', 'local AI', 'Floyd AI', 'Legacy AI',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Floyd Labs | Garage-Born AI, Spite-Driven Innovation',
     description:
-      'Building AI that belongs to you, not to shareholders. 73+ tools, 3 MCP servers, $0 subscriptions.',
+      'Building AI that belongs to you, not to shareholders. 73+ tools, 13 MCP servers, $0 subscriptions.',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1024, height: 1024, alt: 'Floyd\'s Labs - Legacy AI' }],
   },
