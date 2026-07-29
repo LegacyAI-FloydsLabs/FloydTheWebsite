@@ -115,10 +115,15 @@ export async function POST(request: Request) {
     switch (method) {
       case 'initialize': {
         // No auth required for initialize
+        // Standard MCP InitializeResult shape: protocolVersion at the top level,
+        // capabilities as capability objects (not booleans), serverInfo holding only
+        // name + version. Strict SDK clients (mcp-gateway, OMP) validate this shape
+        // and rejected the previous nested/boolean form as unreachable.
         return NextResponse.json(
           createResponse(id, {
-            serverInfo: SERVER_INFO,
-            capabilities: SERVER_INFO.capabilities,
+            protocolVersion: SERVER_INFO.protocolVersion,
+            capabilities: { tools: {} },
+            serverInfo: { name: SERVER_INFO.name, version: SERVER_INFO.version },
           }),
           { headers: corsHeaders }
         );
