@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { PageHero } from "@/components/page-hero";
+import { products } from "@/lib/products";
+export const metadata={title:"Applications",description:"Useful tools from Floyd’s Labs: architecture discovery, CLI helpers, a browser terminal, a workspace dashboard, and agent guardrails.",alternates:{canonical:"/apps"}};
+export default function AppsPage(){return <><PageHero eyebrow="BUILT AT FLOYD’S LABS" title="Tools that earn their place."><p>Five ways to remove a little friction from real work. Choose a product, read its requirements, and get its release package from the public workbench.</p></PageHero><section className="section-pad content-wrap"><div className="card-grid three-col">{products.map(p=><article className="floyd-card app-card" key={p.id}><span className="index-number">v{p.version} / {p.license}</span><h2>{p.name}</h2><strong>{p.tagline}</strong><p>{p.description}</p><p className="product-note">{p.requirement}</p><Link className="button secondary" href={`/open-source#${p.id}`}>Get {p.name}</Link></article>)}</div></section></>;}

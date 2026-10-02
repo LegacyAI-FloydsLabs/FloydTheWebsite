@@ -195,3 +195,16 @@ D) Completeness matrix (item -> done/blocked -> evidence)
 
 ## Hard gate
 If any requested item has no evidence row, final status MUST be INCOMPLETE.
+
+## Deployment verification — 2026-10-02
+
+- GitHub remote verified: `LegacyAI-FloydsLabs/FloydTheWebsite`.
+- GitHub default branch observed as `preview`; `main` is protected by active
+  ruleset `FLProtect`, requiring a pull request and forbidding force pushes.
+- Existing Vercel project `floyd-labs` tracks `main` for production and is
+  connected to this GitHub repository. This supersedes the old staging table
+  where the preview URL was recorded as the production URL.
+- A separate Next.js package at `apps/proving-ground` carries the refreshed
+  Proving Ground. Its source was imported from Sites commit
+  `16d9fb8e2315b0b45bcd8fb394a6875def15113c`; Sites authentication and worker
+  dependencies are excluded. The existing production backend is unchanged.
