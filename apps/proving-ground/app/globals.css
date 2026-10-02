@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 :root {
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-display: Inter, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
   --bg: #09040f;
   --bg-soft: #13091f;
   --panel: rgba(12, 6, 22, 0.94);
