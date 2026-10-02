@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Barlow, Barlow_Condensed, IBM_Plex_Mono } from "next/font/google";
 import { SiteShell } from "@/components/site-shell";
 import { siteUrl, isPreviewDeployment } from "@/lib/deployment";
 import "./globals.css";
-
-const sans = Barlow({ variable: "--font-sans", subsets: ["latin"], weight: ["400", "500", "600", "700"], display: "swap" });
-const display = Barlow_Condensed({ variable: "--font-display", subsets: ["latin"], weight: ["600", "700"], display: "swap" });
-const mono = IBM_Plex_Mono({ variable: "--font-mono", subsets: ["latin"], weight: ["400", "500"], display: "swap" });
 
 export async function generateMetadata(): Promise<Metadata> {
   const base = new URL(siteUrl);
@@ -38,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" data-theme="dark">
-      <body className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+      <body>
         <SiteShell>{children}</SiteShell>
       </body>
     </html>
