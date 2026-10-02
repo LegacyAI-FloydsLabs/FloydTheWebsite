@@ -290,3 +290,19 @@ D) Completeness matrix (item -> done/blocked -> evidence)
 
 ## Hard gate
 If any requested item has no evidence row, final status MUST be INCOMPLETE.
+
+## Proving Ground deployment
+
+`apps/proving-ground/` is the standalone Floyd Labs Proving Ground site.
+This intentional second application has its own package, lockfile, Next.js
+configuration and Vercel project. The database-backed site remains at the
+repository root. Its source and database are not shared with this package.
+
+- Local port: `17453`, matching the existing Proving Ground port allocation.
+- Verify: `cd apps/proving-ground && npm ci && npm run check`.
+- Vercel production branch: `main`; other branches build preview deployments.
+- Updates accumulate on `preview` and go through a pull request to `main`.
+- Vercel uses this package's root directory; the original project uses `/`.
+- The Sites editing copy remains available for its separate hosting runtime.
+- Contact submissions remain a clearly labeled demonstration; the admin URL
+  redirects to the existing production admin rather than trusting Sites headers.

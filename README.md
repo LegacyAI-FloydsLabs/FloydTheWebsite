@@ -22,3 +22,34 @@ yarn dev
 
 ## Deployment
 Auto-deploys to Vercel on push to `main`.
+
+## Proving Ground previews
+
+The refreshed Floyd Labs Proving Ground lives in `apps/proving-ground`.
+Its workshop artwork, public release hub and responsive pages deploy as an
+independent Next.js site. The database-backed website and MCP API stay at the
+repository root.
+
+Push work to `preview` or a feature branch. Vercel builds that commit and
+provides a preview URL. Open a pull request to `main`, inspect the preview,
+and let the quality checks finish before merging. `main` is the production
+branch; preview pushes do not update production.
+
+```sh
+cd apps/proving-ground
+npm ci
+npm run check
+npm run dev
+```
+
+The local preview uses port 17453. No database credentials or Vercel token are
+needed for this package. The contact form is explicitly a demonstration;
+admin links use the existing production login.
+
+The [preview branch](https://floyd-labs-proving-ground-git-preview-legacy-floydslabs.vercel.app)
+is available to the Vercel team. After a reviewed merge, the public site is at
+[floyd-labs-proving-ground.vercel.app](https://floyd-labs-proving-ground.vercel.app).
+Production requires an up-to-date pull request and successful `Proving Ground
+quality`, `Vercel – floyd-labs-proving-ground`, and `Vercel – floyd-labs` checks.
+The quality job runs lint, a production build, TypeScript, and route, image,
+release-link, accessibility markup, attribution, and authentication-boundary checks.
