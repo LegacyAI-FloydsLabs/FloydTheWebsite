@@ -361,7 +361,7 @@ img { max-width: 100%; height: auto; }
 .tool-controls input:focus, .contact-form input:focus, .contact-form textarea:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0, 229, 255, .1); }
 .filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
 .filter { border: 1px solid var(--border); background: transparent; color: var(--muted); border-radius: 999px; padding: 7px 11px; cursor: pointer; font: 700 11px var(--font-mono), monospace; }
-.filter:hover, .filter.active { color: #07020b; border-color: var(--cyan); background: var(--cyan); }
+.filter:hover, .filter.active { color: var(--bg); border-color: var(--cyan); background: var(--cyan); }
 .result-count { color: var(--faint); font: 11px var(--font-mono), monospace; }
 .tool-card h2 { font-size: 17px; }
 .tool-meta { display: flex; justify-content: space-between; margin-top: 20px; color: var(--faint); font: 11px var(--font-mono), monospace; }
@@ -427,7 +427,7 @@ pre { overflow-x: auto; padding: 18px; border-radius: 9px; border: 1px solid var
 .endpoint-list { display: grid; gap: 13px; }
 .endpoint { padding: 18px; }
 .endpoint > div { display: flex; align-items: center; gap: 12px; }
-.method { padding: 6px 8px; border-radius: 5px; color: #08030e; font: 900 10px var(--font-mono), monospace; }
+.method { padding: 6px 8px; border-radius: 5px; color: var(--bg); font: 900 10px var(--font-mono), monospace; }
 .method.get { background: var(--cyan); }
 .method.post { background: var(--green); }
 .endpoint code { color: var(--text); font-family: var(--font-mono), monospace; font-size: 13px; }
@@ -900,7 +900,7 @@ pre { overflow-x: auto; padding: 18px; border-radius: 9px; border: 1px solid var
   letter-spacing: .06em;
   text-transform: uppercase;
 }
-.article-byline span + span::before {
+.article-byline > * + *::before {
   content: "•";
   padding: 0 12px;
   color: var(--purple);
@@ -1121,7 +1121,7 @@ pre { overflow-x: auto; padding: 18px; border-radius: 9px; border: 1px solid var
   .article-sequence { align-items: flex-start; flex-direction: column; gap: 7px; }
   .article-sequence b { padding: 0; border: 0; }
   .article-byline { display: grid; gap: 7px; }
-  .article-byline span + span::before { display: none; }
+  .article-byline > * + *::before { display: none; }
   .article-body > p { font-size: 18px; line-height: 1.75; }
   .story-facts > div { grid-template-columns: 1fr; gap: 4px; }
   .story-navigation { grid-template-columns: 1fr; }

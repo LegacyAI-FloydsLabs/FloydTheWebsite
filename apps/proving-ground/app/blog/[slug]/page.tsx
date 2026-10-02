@@ -1,10 +1,35 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { posts } from "@/lib/site-data";
+import { formatPostDate } from "@/lib/posts";
+import { siteUrl } from "@/lib/deployment";
 
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = posts.find((item) => item.slug === slug);
+  if (!post) notFound();
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `${siteUrl}/blog/${post.slug}` },
+    authors: post.author ? [{ name: post.author }] : undefined,
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `${siteUrl}/blog/${post.slug}`,
+      publishedTime: post.date || undefined,
+      authors: post.author ? [post.author] : undefined,
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "Floyd Labs Garage Chronicles" }],
+    },
+    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: ["/og.png"] },
+  };
 }
 
 function inline(text: string): ReactNode[] {
@@ -101,8 +126,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <h1>{post.title}</h1>
           <p className="article-deck">{post.subtitle}</p>
           <div className="article-byline">
-            <span>{post.author}</span>
-            <span>{post.date}</span>
+            {post.author && <span>{post.author}</span>}
+            {post.date && <time dateTime={post.date}>{formatPostDate(post.date)}</time>}
             <span>{readMinutes} min read</span>
           </div>
         </header>
@@ -118,9 +143,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <small>{storyNumber} of {String(posts.length).padStart(2, "0")} in sequence</small>
           </aside>
 
-          <main className="article-body">
+          <div className="article-body">
             <MarkdownBody source={post.body} />
-          </main>
+          </div>
         </div>
 
         <nav className="story-navigation" aria-label="Garage Chronicles navigation">

@@ -12,7 +12,7 @@ const endpoints = [
   ["GET", "/api/mcp/skills", "List all available skills."],
   ["POST", "/api/mcp/skills/{name}/execute", "Execute a skill with JSON input."],
   ["GET", "/api/mcp/health", "Check system health without authentication."],
-  ["GET", "/api/mcp/metrics", "Review authenticated usage statistics."],
+  ["GET", "/api/mcp/metrics", "Read public aggregate usage statistics; this endpoint does not require authentication."],
 ] as const;
 
 export default function ApiDocsPage() {

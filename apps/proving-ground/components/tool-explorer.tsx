@@ -35,6 +35,7 @@ export function ToolExplorer() {
               key={item}
               type="button"
               className={group === item ? "filter active" : "filter"}
+              aria-pressed={group === item}
               onClick={() => setGroup(item)}
             >
               {item === "all" ? "All" : item}

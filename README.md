@@ -45,3 +45,11 @@ npm run dev
 The local preview uses port 17453. No database credentials or Vercel token are
 needed for this package. The contact form is explicitly a demonstration;
 admin links use the existing production login.
+
+The [preview branch](https://floyd-labs-proving-ground-git-preview-legacy-floydslabs.vercel.app)
+is available to the Vercel team. After a reviewed merge, the public site is at
+[floyd-labs-proving-ground.vercel.app](https://floyd-labs-proving-ground.vercel.app).
+Production requires an up-to-date pull request and successful `Proving Ground
+quality`, `Vercel – floyd-labs-proving-ground`, and `Vercel – floyd-labs` checks.
+The quality job runs lint, a production build, TypeScript, and route, image,
+release-link, accessibility markup, attribution, and authentication-boundary checks.

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { posts } from "@/lib/site-data";
+import { formatPostDate } from "@/lib/posts";
 
 export const metadata = {
   title: "Blog",
@@ -19,7 +20,7 @@ export default function BlogPage() {
             <Link className="floyd-card post-row" href={`/blog/${post.slug}`} key={post.slug}>
               <span className="post-number">{String(index + 1).padStart(2, "0")}</span>
               <div>
-                <span className="post-meta">◷ {post.date} · {post.author}</span>
+                <span className="post-meta">{[formatPostDate(post.date), post.author].filter(Boolean).join(" · ") || "Garage Chronicles"}</span>
                 <h2>{post.title}</h2>
                 <strong>{post.subtitle}</strong>
                 <p>{post.excerpt}</p>

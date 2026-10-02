@@ -7,35 +7,29 @@ export const metadata = {
   description: "Connect an LLM to the Floyd Labs MCP server and REST API.",
 };
 
-const configExample = `{
-  "mcpServers": {
-    "floyd-labs": {
-      "command": "npx",
-      "args": ["-y", "@anthropics/mcp-proxy"],
-      "env": {
-        "MCP_PROXY_URL": "https://floydslabs.com/api/mcp",
-        "MCP_PROXY_HEADERS": "Authorization: Bearer YOUR_API_KEY"
-      }
+const initializeExample = `curl https://www.floydslabs.com/api/mcp \\
+  --header 'Content-Type: application/json' \\
+  --data '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "initialize",
+    "params": {
+      "protocolVersion": "2024-11-05",
+      "capabilities": {},
+      "clientInfo": { "name": "my-client", "version": "1.0" }
     }
-  }
-}`;
+  }'`;
 
-const requestExample = `POST https://floydslabs.com/api/mcp
-Content-Type: application/json
-Authorization: Bearer YOUR_API_KEY
-
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "tools/list",
-  "params": {}
-}`;
+const requestExample = `curl https://www.floydslabs.com/api/mcp \\
+  --header 'Content-Type: application/json' \\
+  --header "Authorization: Bearer $FLOYD_API_KEY" \\
+  --data '{ "jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {} }'`;
 
 export default function ConnectPage() {
   return (
     <>
       <PageHero eyebrow="● MCP SERVER LIVE" title="Connect Your LLM to Floyd Labs">
-        <p>73 production-ready AI skills organized across three MCP servers. Use JSON-RPC, the REST API, or interactive documentation.</p>
+        <p>A catalog of 73 AI skills across three tool groups. Connect through the production JSON-RPC endpoint or explore the REST API reference.</p>
         <div className="button-row">
           <a className="button secondary" href="https://github.com/LegacyAI-FloydsLabs" target="_blank" rel="noreferrer">GitHub Organization ↗</a>
           <a className="button primary" href="https://www.LegacyAI.space" target="_blank" rel="noreferrer">LegacyAI.space ↗</a>
@@ -43,7 +37,7 @@ export default function ConnectPage() {
       </PageHero>
       <section className="section-pad compact">
         <div className="content-wrap">
-          <h2 className="center-heading">3 MCP Servers · 67 Mapped Tools · 73 Total Skills</h2>
+          <h2 className="center-heading">3 Tool Groups · 67 Mapped Tools · 73 Catalog Skills</h2>
           <div className="card-grid three-col server-grid">
             {toolGroups.map((server) => (
               <article className="floyd-card" key={server.name}>
@@ -63,22 +57,23 @@ export default function ConnectPage() {
             <div>
               <h2>Get Your API Key</h2>
               <p>Request access to get a unique Floyd Labs key with rate limiting and usage tracking.</p>
-              <Link href="/contact" className="button primary small">Request API Access →</Link>
+              <a href="https://www.floydslabs.com/contact" className="button primary small">Request API Access →</a>
             </div>
           </article>
           <article className="floyd-card step-card">
             <span className="step-number pink">2</span>
             <div>
-              <h2>Configure Your MCP Client</h2>
-              <p>Add Floyd Labs to your client configuration.</p>
-              <pre><code>{configExample}</code></pre>
+              <h2>Check the Connection</h2>
+              <p>The production endpoint accepts JSON-RPC POST requests and reports protocol version 2024-11-05. This handshake does not require an API key.</p>
+              <pre><code>{initializeExample}</code></pre>
+              <p>Client support depends on its transport. Clients that require stdio or SSE need a compatible adapter; this endpoint is not an SSE URL.</p>
             </div>
           </article>
           <article className="floyd-card step-card">
             <span className="step-number green">3</span>
             <div>
-              <h2>Start Using Tools</h2>
-              <p>Use the single-tool proxy or call the JSON-RPC endpoint directly.</p>
+              <h2>List Available Tools</h2>
+              <p>Set your issued key in the FLOYD_API_KEY environment variable, then request the tool list. The endpoint exposes a single <code>floyd</code> proxy with list, describe, and execute actions. Tool access requires a valid API key.</p>
               <pre><code>{requestExample}</code></pre>
               <Link href="/api-docs" className="text-link">Browse the API surface →</Link>
             </div>

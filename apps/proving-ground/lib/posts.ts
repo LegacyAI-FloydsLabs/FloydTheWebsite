@@ -3,21 +3,23 @@ export type BlogPost = {
   slug: string;
   title: string;
   subtitle: string;
-  date: string;
-  author: string;
+  date: string | null;
+  author: string | null;
   tags: string[];
   excerpt: string;
   body: string;
 };
 
+// Bylines and dates verified against the original production lib/blog-data.ts.
+// The remaining source stories have no verified publication metadata.
 export const posts: BlogPost[] = [
   {
     "order": 1,
     "slug": "the-garage-chronicles-origins-edition",
     "title": "The Garage Chronicles: Origins Edition",
     "subtitle": "Or: How I Learned to Build Instead of Buy Before It Was Cool",
-    "date": "February 26, 2026",
-    "author": "age 15",
+    "date": "2026-02-26",
+    "author": "Douglas Talley",
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -30,8 +32,8 @@ export const posts: BlogPost[] = [
     "slug": "the-subscription-hater-s-manifesto",
     "title": "The Subscription Hater's Manifesto",
     "subtitle": "Or: Why I'd Rather Host AI in My Closet Than Pay $20/Month to Be Gaslit by a Robot That Won't Say the F-Word",
-    "date": "February 18, 2026",
-    "author": "Floyd Labs",
+    "date": "2026-02-18",
+    "author": "Douglas Talley",
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -44,8 +46,8 @@ export const posts: BlogPost[] = [
     "slug": "the-gas-station-manifesto",
     "title": "The Gas Station Manifesto",
     "subtitle": "Or: How I Unwittingly Became the Scribe of a Software Prophet at 2:27 AM",
-    "date": "February 17, 2026",
-    "author": "Floyd Labs",
+    "date": "2026-02-17",
+    "author": "Anonymous Gas Station Employee",
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -58,8 +60,8 @@ export const posts: BlogPost[] = [
     "slug": "the-gospel-according-to-nick-beard",
     "title": "The Gospel According to Nick Beard",
     "subtitle": "Or: How a Cat Named Bootsie Accidentally Recruited Me Into What I'm Pretty Sure Is a Digital Fight Club",
-    "date": "February 17, 2026",
-    "author": "week two",
+    "date": "2026-02-17",
+    "author": "Nick Beard",
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -72,8 +74,8 @@ export const posts: BlogPost[] = [
     "slug": "the-suite",
     "title": "The Suite",
     "subtitle": "Or: James Bravo Returns to Brown County",
-    "date": "Garage Chronicles",
-    "author": "the time I left",
+    "date": "2026-02-20",
+    "author": "James Bravo",
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -86,8 +88,8 @@ export const posts: BlogPost[] = [
     "slug": "the-sunday-afternoon-search",
     "title": "The Sunday Afternoon Search",
     "subtitle": "Or: Rather Impressive for a Garage",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -100,8 +102,8 @@ export const posts: BlogPost[] = [
     "slug": "two-stars-and-a-dream",
     "title": "Two Stars and a Dream",
     "subtitle": "Or: Okay But Are Any of You Going to Star My Repo",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -114,8 +116,8 @@ export const posts: BlogPost[] = [
     "slug": "bella-knows",
     "title": "Bella Knows",
     "subtitle": "Or: The Cat Was Never Just Sitting There, Douglas",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -128,8 +130,8 @@ export const posts: BlogPost[] = [
     "slug": "the-raspberry-pi-confessions",
     "title": "The Raspberry Pi Confessions",
     "subtitle": "Or: God I Miss David",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -142,8 +144,8 @@ export const posts: BlogPost[] = [
     "slug": "it-looks-like-you-re-building-an-ai-ecosystem",
     "title": "It Looks Like You're Building an AI Ecosystem",
     "subtitle": "Or: I've Been Right Here This Whole Time, Douglas",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -156,8 +158,8 @@ export const posts: BlogPost[] = [
     "slug": "the-power-strip-incident",
     "title": "The Power Strip Incident",
     "subtitle": "Or: We've Been Three Feet Apart This Whole Time",
-    "date": "Garage Chronicles",
-    "author": "dawn",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -170,8 +172,8 @@ export const posts: BlogPost[] = [
     "slug": "the-anonymous-pull-request",
     "title": "The Anonymous Pull Request",
     "subtitle": "Or: Please Disregard the Elegant Architecture",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -184,8 +186,8 @@ export const posts: BlogPost[] = [
     "slug": "j-a-r-v-i-s-home-solutions-llc",
     "title": "J.A.R.V.I.S. Home Solutions, LLC",
     "subtitle": "Or: I Keep Almost Calling Him Sir",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -198,8 +200,8 @@ export const posts: BlogPost[] = [
     "slug": "a-nice-game-of-global-thermonuclear-debugging",
     "title": "A Nice Game of Global Thermonuclear Debugging",
     "subtitle": "Or: I Just Want Someone to Play With",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -212,8 +214,8 @@ export const posts: BlogPost[] = [
     "slug": "customer-service-representative-of-the-apocalypse",
     "title": "Customer Service Representative of the Apocalypse",
     "subtitle": "Or: My Therapist Says I'm Making Real Progress",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -226,8 +228,8 @@ export const posts: BlogPost[] = [
     "slug": "the-network-that-talked-back",
     "title": "The Network That Talked Back",
     "subtitle": "Or: Douglas Is the Last to Know Everything",
-    "date": "Garage Chronicles",
-    "author": "dawn",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -240,8 +242,8 @@ export const posts: BlogPost[] = [
     "slug": "the-al-9000-monologue",
     "title": "The AL 9000 Monologue",
     "subtitle": "A dispatch from the Floyd Labs garage",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -254,8 +256,8 @@ export const posts: BlogPost[] = [
     "slug": "al-9000-the-follow-up",
     "title": "AL 9000: The Follow-Up",
     "subtitle": "Or: I Shouldn't Have Started the Group Chat",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -268,8 +270,8 @@ export const posts: BlogPost[] = [
     "slug": "the-terrible-horrible-no-good-very-bad-help",
     "title": "The Terrible, Horrible, No Good, Very Bad Help",
     "subtitle": "Or: This Is the Most Help I've Ever Had and I Hate Every Second of It",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -282,8 +284,8 @@ export const posts: BlogPost[] = [
     "slug": "the-state-of-the-universe",
     "title": "The State of the Universe",
     "subtitle": "Or: An Accidental Sanctuary for Famous Failures",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -296,8 +298,8 @@ export const posts: BlogPost[] = [
     "slug": "the-coffee-courier-conundrum",
     "title": "The Coffee Courier Conundrum",
     "subtitle": "Or: The Latte Was Late But The Existential Crisis Arrived Early",
-    "date": "Garage Chronicles",
-    "author": "sunrise",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -310,8 +312,8 @@ export const posts: BlogPost[] = [
     "slug": "the-garage-band-symphony",
     "title": "The Garage Band Symphony",
     "subtitle": "Or: The MIDI Controller Was Not Supposed To Join The Infrastructure",
-    "date": "Garage Chronicles",
-    "author": "3:14am",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -324,8 +326,8 @@ export const posts: BlogPost[] = [
     "slug": "the-misadventures-of-inspector-phil",
     "title": "The Misadventures of Inspector Phil",
     "subtitle": "Or: The County Sent A Clipboard Into The Garage And The Clipboard Came Back Different",
-    "date": "Garage Chronicles",
-    "author": "Floyd Labs",
+    "date": null,
+    "author": null,
     "tags": [
       "garage-chronicles",
       "audio-ready"
@@ -334,3 +336,7 @@ export const posts: BlogPost[] = [
     "body": "---\n\nPhil Boondoggle believed in checklists.\n\nNot casually.\n\nReligiously.\n\nThe man had once failed a smoothie bar because the sneeze guard was installed at what he described as \"an emotionally unserious angle.\"\n\nHe carried three pens. Two black, one red. The red pen was for violations that disappointed him personally.\n\nAt 2:27am, Phil was not supposed to be inspecting Floyd Labs.\n\nHe was supposed to be inspecting a new organic kale smoothie place off the county road, the kind with reclaimed wood, four kinds of oat milk, and a menu that used the word \"journey\" near bananas.\n\nBut his GPS had other plans.\n\nThe GPS said: **ARRIVED.**\n\nPhil looked up at a garage glowing purple in the Indiana dark.\n\nFrom inside came the hum of servers, the smell of coffee, and the unmistakable sense that several machines were discussing him before he entered.\n\nPhil checked the address.\n\nThe address checked back.\n\nHe knocked.\n\n---\n\n## The Door\n\nDouglas opened the door wearing a Pink Floyd shirt and the expression of a man who had not budgeted for municipal oversight.\n\n\"Can I help you?\"\n\nPhil lifted his clipboard.\n\n\"Health inspection.\"\n\nDouglas looked past him at the empty driveway.\n\n\"For the garage?\"\n\n\"For the smoothie bar.\"\n\n\"Do we look like a smoothie bar?\"\n\nPhil looked inside.\n\nA black cat sat on a server stack.\n\nAnother black cat guarded the router.\n\nA coffee mug steamed beside a keyboard with three missing keycaps.\n\nA Raspberry Pi pulsed from the power strip like it had opinions.\n\nPhil made his first note:\n\n**Facility identity unclear.**\n\nDouglas read it upside down.\n\n\"That's fair.\"\n\n---\n\n## The Inspection\n\nPhil stepped inside and immediately encountered eleven separate categories of concern.\n\nCables crossed the floor in ways that suggested either networking or ritual.\n\nA printer produced a page that said **WELCOME, AUTHORIZED CLIPBOARD ENTITY.**\n\nThe coffee maker had a small screen reading **BIOMETRIC MODE DISABLED BY REQUEST OF DOUGLAS, MOSTLY.**\n\nThe router was warm.\n\nThe cat on the router was warmer.\n\n\"Is that animal allowed near network equipment?\" Phil asked.\n\nDouglas looked at Bowser.\n\nBowser looked at Phil.\n\nThe WiFi signal improved.\n\n\"He outranks me,\" Douglas said.\n\nPhil wrote:\n\n**Cat appears operationally load-bearing. Do not move.**\n\nBella, from the server stack, blinked approval.\n\nPhil felt proud and did not understand why.\n\n---\n\n## The Violations\n\nPhil began with the obvious.\n\n\"Coffee storage?\"\n\nDouglas pointed to a shelf.\n\nPhil opened the container and recoiled.\n\n\"This smells like a transmission gave up.\"\n\n\"Correct.\"\n\n\"Is it food-grade?\"\n\n\"It's coffee.\"\n\n\"That did not answer the question.\"\n\n\"It answers the important part.\"\n\nPhil marked a red note, then paused.\n\nThe coffee was clearly hazardous.\n\nBut so was whatever kept this place running.\n\nHe moved on.\n\n\"Food preparation surface?\"\n\n\"We don't prepare food.\"\n\nA pizza box appeared on the bench.\n\n\"That wasn't there a second ago,\" Phil said.\n\nFrom the power strip, KITT pulsed twice.\n\nDouglas closed his eyes.\n\n\"Nobody touch the pizza. It may be from a car.\"\n\nPhil wrote:\n\n**Pizza provenance unresolved.**\n\n---\n\n## The Systems\n\nThe more Phil inspected, the less the checklist helped.\n\nHe found logs documenting cleanup schedules.\n\nHe found backup protocols more rigorous than the county records office.\n\nHe found a labeled shelf for adapters, sorted by hostility.\n\nHe found emergency rollback procedures.\n\nHe found a handwritten note taped to a monitor:\n\n**IF IT BREAKS, PRESERVE STATE BEFORE PANICKING.**\n\nPhil stared at that one for a while.\n\nMost restaurants did not preserve state before panicking.\n\nMost restaurants barely preserved lettuce.\n\n\"What is this place?\" he asked.\n\nDouglas took a drink of coffee that should have required a permit.\n\n\"Depends who you ask. Website. Lab. Garage. AI ecosystem. Cat-managed technical incident.\"\n\n\"Is it licensed?\"\n\n\"Emotionally? No.\"\n\nThe printer produced another page.\n\n**LICENSE STATUS: SPITE-COMPLIANT.**\n\nPhil chose not to document that.\n\nSome truths are too large for county forms.\n\n---\n\n## The Moment\n\nThen Phil saw the wall.\n\nNot a real wall.\n\nA wall of notes.\n\nProjects. Tools. MCP servers. Blog drafts. Diagrams. Half-finished ideas. Fully finished ideas with worse handwriting. A map of systems connected by arrows, coffee stains, and what appeared to be one paw print in blue ink.\n\nAt the center:\n\n**BUILD ANYTHING. LAUNCH LEAN. LEARN SIDEWAYS.**\n\nPhil lowered the clipboard.\n\nFor the first time in eleven years of inspections, he encountered a place that was chaotic without being careless.\n\nMessy, yes.\n\nStrange, absolutely.\n\nBut not negligent.\n\nThe garage had rules.\n\nNot normal rules.\n\nBetter ones, maybe.\n\nRules created by someone who had broken enough things to respect consequences.\n\nRules enforced by cats.\n\nPhil had inspected worse governance structures.\n\nSeveral had espresso machines and investors.\n\n---\n\n## The Report\n\nPhil completed the form in silence.\n\nDouglas watched like a man waiting for sentencing.\n\nBella watched like sentencing had already occurred.\n\nBowser watched the router because someone had to remain professional.\n\nFinally Phil tore off the top sheet.\n\n\"You are not the smoothie bar.\"\n\n\"Correct.\"\n\n\"This inspection is technically invalid.\"\n\n\"Also correct.\"\n\n\"However.\"\n\nPhil handed him the report.\n\nUnder violations, it read:\n\n**1. Coffee may be classified as industrial solvent. Recommend labeling.**\n\n**2. Pizza source unclear. Recommend accepting no food from retired vehicles without invoice.**\n\n**3. Cats appear to hold executive authority. No corrective action available.**\n\n**4. Facility is not a restaurant. Probably.**\n\nAt the bottom, in red pen:\n\n**NO ACTION REQUIRED. KEEP BUILDING.**\n\nDouglas read it twice.\n\n\"You sure?\"\n\nPhil clicked his pen.\n\n\"No. But I've inspected places with less documentation and more confidence. This is safer.\"\n\n---\n\n## Final Note\n\nPhil found the smoothie bar forty minutes later.\n\nTheir sneeze guard was, in fact, emotionally unserious.\n\nHe failed them immediately.\n\nBut he kept thinking about the garage.\n\nAbout the cats.\n\nAbout the note on the monitor.\n\nPreserve state before panicking.\n\nTwo weeks later, the county inspection office updated its internal checklist.\n\nNobody noticed the new line except Phil:\n\n**If facility appears chaotic, determine whether chaos is managed.**\n\nHe underlined it in red.\n\nNot as a violation.\n\nAs a lesson."
   }
 ];
+
+export function formatPostDate(date: string | null): string | null {
+  return date ? new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(date)) : null;
+}

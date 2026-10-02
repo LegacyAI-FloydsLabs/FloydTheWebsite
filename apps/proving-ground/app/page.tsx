@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { posts } from "@/lib/site-data";
+import { formatPostDate } from "@/lib/posts";
 import { WorkshopScene } from "@/components/workshop-scene";
 
 export default function HomePage() {
@@ -34,7 +35,7 @@ export default function HomePage() {
     </div></section>
     <section className="section-pad content-wrap">
       <div className="editorial-heading"><div><p className="eyebrow">Notes, experiments, occasional caffeine damage</p><h2>Latest from the Garage</h2></div><Link className="button secondary" href="/blog">All garage notes</Link></div>
-      <div className="card-grid three-col">{posts.slice(0,3).map(post=><Link className="floyd-card post-card" href={`/blog/${post.slug}`} key={post.slug}><span className="index-number">FIELD NOTE / {post.date}</span><h3>{post.title}</h3><p>{post.excerpt}</p><span className="post-meta">{post.author}</span></Link>)}</div>
+      <div className="card-grid three-col">{posts.slice(0,3).map(post=><Link className="floyd-card post-card" href={`/blog/${post.slug}`} key={post.slug}><span className="index-number">FIELD NOTE{post.date && ` / ${formatPostDate(post.date)}`}</span><h3>{post.title}</h3><p>{post.excerpt}</p>{post.author && <span className="post-meta">{post.author}</span>}</Link>)}</div>
     </section>
     <section className="section-pad content-wrap story-row workshop-team">
       <WorkshopScene scene="router-watch" />

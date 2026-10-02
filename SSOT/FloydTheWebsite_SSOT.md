@@ -208,3 +208,17 @@ If any requested item has no evidence row, final status MUST be INCOMPLETE.
   Proving Ground. Its source was imported from Sites commit
   `16d9fb8e2315b0b45bcd8fb394a6875def15113c`; Sites authentication and worker
   dependencies are excluded. The existing production backend is unchanged.
+- New Vercel project `floyd-labs-proving-ground` uses root directory
+  `apps/proving-ground`, Node 22, `npm ci`, and `npm run build`. GitHub integration
+  creates previews from non-production branches; `main` is its production branch.
+- `FLProtect` now requires three successful checks before a main merge:
+  `Proving Ground quality`, `Vercel – floyd-labs-proving-ground`, and
+  `Vercel – floyd-labs`. Existing pull-request, deletion, and force-push protections
+  remain active without bypass actors.
+- Deployment review repaired nested blog landmarks, exposed filter selection,
+  corrected light-theme control contrast and API access documentation, and restored
+  five original story bylines and dates from `lib/blog-data.ts`. Unverified
+  metadata on eighteen stories is omitted. All twenty-three story bodies are preserved.
+- The production MCP initialization handshake was verified at
+  `https://www.floydslabs.com/api/mcp`; an unauthenticated tool-list request returned
+  HTTP 401. Connection instructions use that endpoint and no unavailable npm proxy.

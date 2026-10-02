@@ -67,7 +67,28 @@ test("renders the refreshed homepage and all sitemap routes", async () => {
     assert.equal(response.status, 200, path);
     const page = await response.text();
     assert.equal((page.match(/<h1\b/g) || []).length, 1, path);
+    assert.equal((page.match(/<main\b/g) || []).length, 1, `One main landmark: ${path}`);
   }
+});
+
+test("exposes filter selection and preserves verified article attribution", async () => {
+  const tools = await (await fetch(`${base}/tools`)).text();
+  assert.equal((tools.match(/aria-pressed="true"/g) || []).length, 1);
+  assert.equal((tools.match(/aria-pressed="false"/g) || []).length, 4);
+  const origin = await (await fetch(`${base}/blog/the-garage-chronicles-origins-edition`)).text();
+  assert.match(origin, /<title>The Garage Chronicles: Origins Edition \| Floyd Labs<\/title>/);
+  assert.match(origin, /property="og:type" content="article"/);
+  assert.match(origin, /name="author" content="Douglas Talley"/);
+  const suite = await (await fetch(`${base}/blog/the-suite`)).text();
+  assert.match(suite, /name="author" content="James Bravo"/);
+  assert.match(suite, /datetime="2026-02-20"/i);
+  const undated = await (await fetch(`${base}/blog/the-garage-band-symphony`)).text();
+  assert.doesNotMatch(undated, /name="author"|property="article:published_time"/);
+  const docs = await (await fetch(`${base}/api-docs`)).text();
+  assert.match(docs, /public aggregate usage statistics/);
+  const connect = await (await fetch(`${base}/connect`)).text();
+  assert.doesNotMatch(connect, /@anthropics\/mcp-proxy/);
+  assert.match(connect, /https:\/\/www\.floydslabs\.com\/api\/mcp/);
 });
 
 test("serves nine real WebP scene variants", async () => {
