@@ -6,7 +6,7 @@ import { setTimeout as delay } from "node:timers/promises";
 import { after, before, test } from "node:test";
 
 const base = process.env.FLOYD_TEST_BASE_URL || "http://127.0.0.1:17453";
-const canonical = process.env.NEXT_PUBLIC_SITE_URL || "https://floyd-labs-proving-ground.vercel.app";
+const canonical = process.env.NEXT_PUBLIC_SITE_URL || "https://www.floydslabs.com";
 let server;
 let serverLog = "";
 
@@ -143,5 +143,16 @@ test("uses this deployment's canonical URL and keeps previews out of search", as
   else assert.match(robots, /Disallow: \/admin/);
   const html = await (await fetch(base)).text();
   assert.ok(html.includes(`${canonical}/og.png`));
+  assert.ok(html.includes(`<link rel="canonical" href="${canonical}"`));
+  assert.ok(html.includes(`<meta property="og:url" content="${canonical}"`));
   assert.doesNotMatch(html, /floyd-labs-proving-ground\.captainphantasy\.chatgpt\.site/);
+  assert.doesNotMatch(html, /floyd-labs-proving-ground\.vercel\.app/);
+});
+
+test("never publishes the SSO-gated preview alias as the canonical host", async () => {
+  const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
+  assert.ok(sitemap.includes(`${canonical}/blog/`));
+  assert.doesNotMatch(sitemap, /floyd-labs-proving-ground\.vercel\.app/);
+  const robots = await (await fetch(`${base}/robots.txt`)).text();
+  assert.doesNotMatch(robots, /floyd-labs-proving-ground\.vercel\.app/);
 });

@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: base,
+    alternates: { canonical: "./" },
     robots: isPreviewDeployment ? { index: false, follow: false } : { index: true, follow: true },
     title: {
       default: "Floyd Labs | Proving Ground",
@@ -24,6 +25,8 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Floyd Labs | Garage-Born AI",
       description: "Human-sized technology, built and tested in real work from rural Indiana.",
       type: "website",
+      url: "./",
+      siteName: "Floyd Labs",
       images: [{ url: "/og.png", width: 1200, height: 630, alt: "Floyd Labs proving ground" }],
     },
     twitter: {
