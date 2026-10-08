@@ -156,3 +156,17 @@ test("never publishes the SSO-gated preview alias as the canonical host", async 
   const robots = await (await fetch(`${base}/robots.txt`)).text();
   assert.doesNotMatch(robots, /floyd-labs-proving-ground\.vercel\.app/);
 });
+
+test("gives every route its own canonical and Open Graph URL", async () => {
+  for (const path of ["/about", "/tools", "/blog", "/connect", "/api-docs"]) {
+    const html = await (await fetch(`${base}${path}`)).text();
+    assert.ok(
+      html.includes(`<link rel="canonical" href="${canonical}${path}"`),
+      `canonical must be this route, not the origin: ${path}`,
+    );
+    assert.ok(
+      html.includes(`<meta property="og:url" content="${canonical}${path}"`),
+      `og:url must be this route, not the origin: ${path}`,
+    );
+  }
+});
