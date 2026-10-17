@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.git/
+*.log
+.env
+.env.*
+Dockerfile
+.gcloudignore
+AGENT_PROMPT.pdf
+HANDOFF.pdf
+HANDOFF.docx
+AGENT_PROMPT.docx
